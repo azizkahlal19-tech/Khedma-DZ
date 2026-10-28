@@ -1,0 +1,6 @@
+{
+  "name": "Khedma DZ - Super App Platform",
+  "description": "Algeria's all-in-one super platform for trades, B2B/B2C commerce, freelance, polivalente manual labor, and operational AI tools across 58 Wilayas.",
+  "requestFramePermissions": ["geolocation", "camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

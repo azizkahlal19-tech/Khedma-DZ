@@ -1,0 +1,260 @@
+import { RealEstateListing } from '../types';
+
+export const INITIAL_REAL_ESTATE_LISTINGS: RealEstateListing[] = [
+  {
+    id: 're-001',
+    titleAr: 'شقة F4 راقية مطلة على البحر بسعيد حمدين (عقد موثق + دفتر عقاري)',
+    titleFr: 'Appartement F4 Vue Dégagée Saïd Hamdine (Acte & Livret Foncier)',
+    transactionType: 'sale',
+    propertyType: 'apartment_f4',
+    wilayaCode: '16',
+    wilayaNameAr: 'الجزائر (بئر مراد رايس)',
+    communeName: 'بئر مراد رايس',
+    neighborhood: 'سعيد حمدين',
+    areaM2: 125,
+    priceDzd: 28500000,
+    pricePeriodUnit: 'total',
+    paperworkStatus: 'acte_livret',
+    paperworkLabelAr: 'عقد ملكية فردي مشهر + دفتر عقاري',
+    roomsCount: 4,
+    floorNumber: 3,
+    hasElevator: true,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: true,
+    hasSeaView: true,
+    sourcePlatform: 'ouedkniss',
+    sourceUrl: 'https://www.ouedkniss.com/vente-appartement-f4-alger-said-hamdine',
+    sourceGroupOrSellerName: 'واد كنيس - وكالة المنار العقارية',
+    contactPhone: '0550112233',
+    contactWhatsapp: '213550112233',
+    imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: 'شقة فاخرة مجددة بالكامل في حي هادئ ومحروس، مطبخ مجهز عصرياً، تدفئة مركزية، مصعد شغال وخزان مائي 1000 لتر فردي. قريبة من الطريق السريع والمدارس.',
+    postedDate: 'منذ يوم',
+    isInspectedByKhedma: true
+  },
+  {
+    id: 're-002',
+    titleAr: 'كراء شقة مفروشة F3 للعائلات والمصطافين في عين الترك (كريلو Krilo DZ)',
+    titleFr: 'Location Vacances F3 Meublé Vue Mer Aïn El Turck (Krilo)',
+    transactionType: 'rent_krilo_vacation',
+    propertyType: 'apartment_f3',
+    wilayaCode: '31',
+    wilayaNameAr: 'وهران',
+    communeName: 'عين الترك',
+    neighborhood: 'شاطئ كاب فالكون',
+    areaM2: 90,
+    priceDzd: 9500,
+    pricePeriodUnit: 'day',
+    paperworkStatus: 'acte_livret',
+    paperworkLabelAr: 'دفتر عقاري ملكية خاصة',
+    roomsCount: 3,
+    floorNumber: 2,
+    hasElevator: false,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: false,
+    hasSeaView: true,
+    sourcePlatform: 'krilo_dz',
+    sourceUrl: 'https://krilo.dz/location-vacances-oran-ain-el-turck',
+    sourceGroupOrSellerName: 'منصة كريلو (Krilo DZ) - إيجار فندقي خاص',
+    contactPhone: '0771889900',
+    contactWhatsapp: '213771889900',
+    imageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: 'شقة مجهزة بالكامل ومكيفة للعائلات فقط (عقد زواج إجباري)، تبعد 150 متر عن الشاطئ، ويفي عالي السرعة، تلفاز ذكي، ومطبخ بجميع الأواني.',
+    postedDate: 'اليوم',
+    isInspectedByKhedma: true
+  },
+  {
+    id: 're-003',
+    titleAr: 'فيلا R+2 حديثة البناء 240م² بحي قاوش الشراقة (فيسبوك ماركت بليس)',
+    titleFr: 'Villa Moderne R+2 240m² Chéraga Kaouch (Facebook Marketplace)',
+    transactionType: 'sale',
+    propertyType: 'villa',
+    wilayaCode: '16',
+    wilayaNameAr: 'الجزائر (الشراقة)',
+    communeName: 'الشراقة',
+    neighborhood: 'حي قاوش',
+    areaM2: 240,
+    priceDzd: 68000000,
+    pricePeriodUnit: 'total',
+    paperworkStatus: 'acte_livret',
+    paperworkLabelAr: 'عقد ملكية + دفتر عقاري + رخصة بناء ومطابقة',
+    roomsCount: 7,
+    floorNumber: 0,
+    hasElevator: false,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: true,
+    hasSeaView: false,
+    sourcePlatform: 'facebook_marketplace',
+    sourceUrl: 'https://www.facebook.com/marketplace/item/alger-cheraga-villa',
+    sourceGroupOrSellerName: 'Facebook Marketplace - الحاج العربي الشراقة',
+    contactPhone: '0661224466',
+    imageUrl: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: 'فيلا عصرية بواجهتين (2 façades)، قراج يتسع لـ 3 سيارات، حديقة خلفية مع مسبح صغير، كاميرات مراقبة وإنذار، تشطيب رخام وفايونس إسباني من الدرجة الأولى.',
+    postedDate: 'منذ 3 أيام',
+    isInspectedByKhedma: true
+  },
+  {
+    id: 're-004',
+    titleAr: 'كراء سنوي شقة F3 نظيفة بحي 1000 مسكن قسنطينة (مجموعة عقار قسنطينة)',
+    titleFr: 'Location Annuelle F3 Propre Cité 1000 Logements Constantine',
+    transactionType: 'rent_yearly',
+    propertyType: 'apartment_f3',
+    wilayaCode: '25',
+    wilayaNameAr: 'قسنطينة',
+    communeName: 'قسنطينة',
+    neighborhood: 'حي 1000 مسكن',
+    areaM2: 82,
+    priceDzd: 32000,
+    pricePeriodUnit: 'month',
+    paperworkStatus: 'decision_attrib',
+    paperworkLabelAr: 'عقد إيجار موثق لسنة قابلة للتجديد',
+    roomsCount: 3,
+    floorNumber: 1,
+    hasElevator: false,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: true,
+    hasSeaView: false,
+    sourcePlatform: 'facebook_groups',
+    sourceUrl: 'https://www.facebook.com/groups/immobilier.constantine.dz',
+    sourceGroupOrSellerName: 'جروب فايسبوك: عقارات وكراء قسنطينة وضواحيها (120k عضو)',
+    contactPhone: '0555998877',
+    imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: 'للكراء عائلياً فقط، طابق أول مريح، غاز طبيعي، سخان، دهان جديد، قريبة من الترامواي ومسجد الحي والابتدائية. التسبيق 6 أشهر أو عام.',
+    postedDate: 'منذ 4 ساعات',
+    isInspectedByKhedma: false
+  },
+  {
+    id: 're-005',
+    titleAr: 'قطعة أرض صالحة للبناء 320م² بالعلمة سطيف قريبة من شارع دبي (واد كنيس)',
+    titleFr: 'Terrain Constructible 320m² El Eulma Proche Rue de Dubaï',
+    transactionType: 'sale',
+    propertyType: 'terrain_constructible',
+    wilayaCode: '19',
+    wilayaNameAr: 'سطيف (العلمة)',
+    communeName: 'العلمة',
+    neighborhood: 'حي صخري / محاذاة شارع دبي للجملة',
+    areaM2: 320,
+    priceDzd: 48000000,
+    pricePeriodUnit: 'total',
+    paperworkStatus: 'acte_livret',
+    paperworkLabelAr: 'عقد ملكية موثق + دفتر عقاري نقي',
+    roomsCount: 0,
+    floorNumber: 0,
+    hasElevator: false,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: true,
+    hasSeaView: false,
+    sourcePlatform: 'ouedkniss',
+    sourceUrl: 'https://www.ouedkniss.com/terrain-constructible-el-eulma-setif',
+    sourceGroupOrSellerName: 'واد كنيس - مستودعات وتجارة الجملة العلمة',
+    contactPhone: '0560778899',
+    imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: 'موقع استراتيجي ممتاز يصلح لبناء مستودع تخزين للجملة (Hangar) أو بناية تجارية سكنية R+4. واجهة 16 متر، جميع الشبكات متوفرة (ماء، كهرباء 380V، غاز وصرف صحي).',
+    postedDate: 'منذ يومين',
+    isInspectedByKhedma: true
+  },
+  {
+    id: 're-006',
+    titleAr: 'كراء هانغار ومستودع تخزين 600م² بالحميز العاصمة مع ساحة مناورة (خدمة ديزاد)',
+    titleFr: 'Location Hangar & Dépôt Stockage 600m² El Hamiz Alger',
+    transactionType: 'commercial',
+    propertyType: 'hangar_depot',
+    wilayaCode: '16',
+    wilayaNameAr: 'الجزائر (الدار البيضاء / الحميز)',
+    communeName: 'الدار البيضاء',
+    neighborhood: 'المنطقة التجارية بالحميز',
+    areaM2: 600,
+    priceDzd: 280000,
+    pricePeriodUnit: 'month',
+    paperworkStatus: 'acte_livret',
+    paperworkLabelAr: 'عقد إيجار تجاري موثق مسجل بالضرائب',
+    roomsCount: 2,
+    floorNumber: 0,
+    hasElevator: false,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: false,
+    hasSeaView: false,
+    sourcePlatform: 'khedma_direct',
+    sourceGroupOrSellerName: 'وسيط خدمة ديزاد العقاري المعتمد',
+    contactPhone: '0562788510',
+    contactWhatsapp: '213562788510',
+    imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: 'هانغار مغطى بارتفاع 7 أمتار، أرضية إيبوكسي صناعية تتحمل الشاحنات الثقيلة (Semi-remorques)، كهرباء قوة 380V، مكتب إداري مكيف، وحراسة كاميرات على مدار الساعة.',
+    postedDate: 'اليوم',
+    isInspectedByKhedma: true
+  }
+];
+
+// Helper to simulate importing a real estate listing from Ouedkniss, Facebook, or Krilo
+export function parseAndImportRealEstateListing(input: {
+  urlOrTitle: string;
+  sourcePlatform: RealEstateListing['sourcePlatform'];
+  transactionType: RealEstateListing['transactionType'];
+  propertyType: RealEstateListing['propertyType'];
+  wilayaCode: string;
+  wilayaNameAr: string;
+  communeName: string;
+  priceDzd: number;
+  areaM2: number;
+  contactPhone: string;
+  paperworkStatus?: RealEstateListing['paperworkStatus'];
+  descriptionAr?: string;
+}): RealEstateListing {
+  const paperworkLabels: Record<RealEstateListing['paperworkStatus'], string> = {
+    acte_livret: 'عقد ملكية موثق + دفتر عقاري',
+    decision_attrib: 'قرار استفادة ودمج قانوني',
+    promesse_vente: 'وعد بالبيع موثق (Promesse)',
+    papier_timbre: 'ورقة مسجلة ومصادق عليها',
+    en_cours: 'ملف التسوية قيد الإشهار العقاري'
+  };
+
+  const status = input.paperworkStatus || 'acte_livret';
+
+  return {
+    id: 're-imp-' + Date.now(),
+    titleAr: input.urlOrTitle.startsWith('http') 
+      ? `عقار مستورد من ${input.sourcePlatform} في ${input.communeName} (${input.areaM2}م²)` 
+      : input.urlOrTitle,
+    titleFr: `Immobilier Importé ${input.sourcePlatform} - ${input.communeName}`,
+    transactionType: input.transactionType,
+    propertyType: input.propertyType,
+    wilayaCode: input.wilayaCode,
+    wilayaNameAr: input.wilayaNameAr,
+    communeName: input.communeName,
+    neighborhood: input.communeName,
+    areaM2: Number(input.areaM2) || 100,
+    priceDzd: Number(input.priceDzd) || 10000000,
+    pricePeriodUnit: input.transactionType.includes('rent') ? (input.transactionType === 'rent_krilo_vacation' ? 'day' : 'month') : 'total',
+    paperworkStatus: status,
+    paperworkLabelAr: paperworkLabels[status],
+    roomsCount: 3,
+    floorNumber: 2,
+    hasElevator: true,
+    hasParking: true,
+    hasWater24h: true,
+    hasGasHeating: true,
+    hasSeaView: false,
+    sourcePlatform: input.sourcePlatform,
+    sourceUrl: input.urlOrTitle.startsWith('http') ? input.urlOrTitle : undefined,
+    sourceGroupOrSellerName: input.sourcePlatform === 'ouedkniss' 
+      ? 'إعلان واد كنيس Ouedkniss مستورد'
+      : input.sourcePlatform === 'krilo_dz'
+      ? 'منصة كريلو Krilo DZ للكراء'
+      : input.sourcePlatform === 'facebook_groups'
+      ? 'مجموعة عقارات فايسبوك محلية'
+      : 'Facebook Marketplace DZ',
+    contactPhone: input.contactPhone || '0555000000',
+    contactWhatsapp: input.contactPhone ? `213${input.contactPhone.replace(/^0/, '')}` : undefined,
+    imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&auto=format&fit=crop&q=80',
+    descriptionAr: input.descriptionAr || 'تم استيراد هذا الإعلان العقاري وتدقيقه تلقائياً لمنع السماسرة الوهميين وضمان مطابقة الأوراق القانونية.',
+    postedDate: 'الآن',
+    isInspectedByKhedma: true,
+    isCustomImported: true
+  };
+}

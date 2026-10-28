@@ -1,0 +1,517 @@
+================================================================================
+KHEDMA DZ - ULTIMATE MASTER SPECIFICATION
+COMPREHENSIVE, EXHAUSTIVE, AND DRAINED TECHNICAL BLUEPRINT
+​Application Identity: Khedma DZ (خدمة ديزاد) - Super App Platform
+Target Audience: 58 Wilayas of Algeria (From Adrar to In Guezzam)
+Core Locales: Arabic (RTL Primary), French (LTR Secondary), English (LTR Tertiary)
+Primary Stakeholders: Clients, Craftsmen/Workers, Merchants/Traders, Freelancers, Enterprises
+System Status: Production-Ready Enterprise Architecture Specification
+​================================================================================
+SECTION 1: SYSTEM CORE, AUTHENTICATION, SECURITY & ADMIN INFRASTRUCTURE
+​Dynamic Language Detection Engine:
+​Description: Automatically sets UI layout, string tables, and directional properties according to the host device's operating system locale setting.
+​Technical Implementation: React Native / Flutter localization modules binding to Localization.locale hooks.
+​Fallback Hierarchy: If the device locale is unsupported, defaults strictly to Algerian Arabic (ar-DZ), followed by French (fr-DZ) and English (en-US).
+​RTL Support Matrix & Layout Mirroring:
+​Description: Complete custom CSS and style transformation engine ensuring right-to-left layout alignment, icon flipping, and padding adjustments across all 58 Wilayas.
+​Technical Implementation: Global directional wrapper enforcing I18nManager.forceRTL(true) for Arabic and dynamic Flexbox/Grid row transformations.
+​Algerian Mobile Number Validator Engine:
+​Description: Strict input sanitization and regex validation enforcing standard 10-digit Algerian mobile subscriber number formats.
+​Technical Implementation: Regular expression check validating against /^0[567][0-9]{8}$/. Rejects international country codes prefixed with +213 during initial local text inputs to standardize database indexing.
+​Mobile Network Carrier Identification Auto-Detection:
+​Description: Real-time substring parser extracting network prefix values to identify and display carrier branding dynamically upon phone number entry.
+​Technical Implementation:
+​Prefix 05: Identifies and tags subscriber under Ooredoo Algeria network infrastructure.
+​Prefix 06: Identifies and tags subscriber under Mobilis (ATM Mobilis) network infrastructure.
+​Prefix 07: Identifies and tags subscriber under Djezzy (OTA) network infrastructure.
+​OTP Generation & SMS Dispatching Engine:
+​Description: High-speed cryptographic 6-digit numeric verification code generation module coupled with throttled SMS gateway dispatchers.
+​Technical Implementation: Secure random generation with a 120-second cooldown retry timer, rate-limiting IP and hardware fingerprints to prevent SMS bombardment attacks.
+​Hardware IMEI & Device Fingerprinting Lock:
+​Description: Deep-level hardware token extraction mapping physical device IDs (Android ID, iOS IdentifierForVendor) to prevent multi-account creation and free-trial harvesting abuse.
+​Technical Implementation: Secure storage (Keychain/EncryptedSharedPreferences) holding a immutable device hash linked to the user registration session.
+​Automated Free Trial Provisioning (30-Day Engine):
+​Description: Instant allocation of a full-access, unrestricted 30-day trial period upon successful hardware-verified phone registration.
+​Technical Implementation: Database timestamp trigger setting subscription_status = 'trial' and trial_expiration_date = NOW() + INTERVAL 30 DAY.
+​Trial Expiry Monitor & Notification Dispatcher:
+​Description: Background cron daemon running hourly queries to evaluate active trial durations and dispatch warning alerts.
+​Technical Implementation: Automated push notification triggers sent exactly at 3 days, 24 hours, and 2 hours remaining before trial expiration.
+​Automated Billing Transition Engine:
+​Description: System process shifting expired trial accounts into a restricted or billable state requiring subscription validation.
+​Technical Implementation: Transitions database user status flags, enforcing the mandatory $1/month or local DZD equivalent recurring fee.
+​RedotPay Global Crypto & Card Payment Gateway Integration:
+​Description: API integration connecting subscription billing and in-app checkout services directly with international crypto and card rails.
+​Technical Implementation: Webhook listener handling payment_success, payment_failed, and subscription_renewed JSON payloads via secure HTTPS REST calls.
+​HARDCODED REDOTPAY ACCOUNT IDENTIFIER:
+​Description: Hardcoded system-level variable storing the primary platform receiver wallet.
+​Value: 1392637804 (Primary System Gateway Receiver for RedotPay transactions).
+​HARDCODED CCP ACCOUNT CREDENTIALS:
+​Description: Hardcoded Posta Algeria administrative financial routing information for manual subscriptions.
+​Value: Account Number 0025937263, Clé 71.
+​HARDCODED RIB BANKING TRANSACTIONS DATA:
+​Description: National banking interface data string used for bank transfers and wire audits.
+​Value: 007 999990025937263 71.
+​HARDCODED SUPER ADMIN OVERRIDE PHONE NUMBER:
+​Description: Hardcoded master system key unlocking supreme privileges.
+​Value: 0562788510.
+​Super Admin Direct Authentication Bypass Pipeline:
+​Description: Interception middleware checking incoming login phone numbers against 0562788510.
+​Technical Implementation: Bypasses standard SMS OTP generation, rate limiting, and hardware IMEI checks, returning an instant administrative JWT session token.
+​Super Admin Automatic Operational Dashboard Redirection:
+​Description: Frontend routing hook intercepting login success states for phone 0562788510.
+​Technical Implementation: Instant navigation stack clear, forcing direct redirection to the Master Operational Dashboard component (/admin/master-control-center).
+​Global Account Suspension & Freezing Engine:
+​Description: Administrative action utility granting authorized staff the power to instantly freeze fraudulent, non-compliant, or abusive client, worker, or merchant profiles.
+​Technical Implementation: Updates user record column is_suspended = true, revoking active JWT tokens and forcing immediate application logout.
+​Manual Escrow Release Override:
+​Description: Administrative dispute resolution tool permitting the Super Admin to bypass automated delivery confirmations and force-release held project funds.
+​Technical Implementation: Secure database transaction executing escrow transfer from holding account to beneficiary worker wallet with logged audit trails.
+​Real-Time Revenue Analytics Dashboard:
+​Description: Live data streaming widget calculating active free trial users versus paid monthly subscribers continuously.
+​Technical Implementation: WebSocket connection feeding aggregated SQL count queries into real-time graphical charts (Chart.js / Recharts).
+​Integrated RedotPay Balance Tracker:
+​Description: Live API query widget displaying the platform's central RedotPay USD and crypto balance directly inside the administrative interface header.
+​Technical Implementation: Authenticated background fetch requesting balance metrics from RedotPay merchant endpoints every 60 seconds.
+​Manual Payment Proof Verification Queue:
+​Description: Audit workflow interface allowing administrators to inspect, approve, or reject uploaded photo screenshots of Baridimob and CCP postal receipts.
+​Technical Implementation: Grid layout presenting receipt images alongside OCR pre-extracted data (Transaction ID, Amount, Date) for one-click verification.
+​58-Wilaya Geographical Traffic & Density Engine:
+​Description: Regional analytics mapping user registration density, active job postings, and merchant distribution across all 58 Algerian Wilayas.
+​Technical Implementation: Aggregation queries grouped by wilaya_code (01 to 58) rendered on an interactive SVG/Vector map of Algeria.
+​Automated Lockout & Feature Restriction Enforcer:
+​Description: Middleware checking subscription status on every API request, immediately restricting access upon unverified expiration.
+​Technical Implementation: HTTP 402 Payment Required status trigger forcing frontend UI to render subscription renewal paywall modals.
+​Grace Period Handler:
+​Description: 72-hour operational window post-subscription expiration allowing restricted, read-only application access to view past invoices and contact support.
+​Technical Implementation: Time-delta check (expiration_date + 72 hours) permitting read endpoints while blocking write actions (bids, posts, purchases).
+​OCR Document Reader - Biometric National ID Cards:
+​Description: Computer vision module extracting National Identification Numbers, full names, birth dates, and addresses from Algerian biometric ID cards.
+​Technical Implementation: On-device ML Kit / Cloud Vision OCR pipeline parsing structural text zones of the national identity card.
+​Algerian Biometric Passport Reader (MRZ Processor):
+​Description: Specialized OCR parser extracting Machine Readable Zone (MRZ) data lines from Algerian biometric passports for rapid identity verification.
+​Technical Implementation: Regex parsing of line 1 and line 2 MRZ strings to extract passport numbers, nationality, and expiration dates.
+​Student Card Validation Engine:
+​Description: Higher education credential scanner parsing university registration numbers and academic year stamps to grant verified student freelancer badges.
+​Technical Implementation: Image upload processing matched against pattern templates of Algerian Ministry of Higher Education student cards.
+​Driving License Categorization - Category B (Light Motor Vehicles):
+​Description: Verification module validating Category B driving licenses for light motor vehicle drivers, couriers, and delivery personnel.
+​Technical Implementation: Document classification and expiry date extraction verifying legal driving eligibility for standard cars and vans.
+​Driving License Categorization - Category C (Heavy Freight Trucks):
+​Description: Verification module validating Category C driving licenses for heavy freight truck drivers and bulk materials logistics operators.
+​Technical Implementation: OCR verification checking license attributes for heavy goods vehicle authorization.
+​Driving License Categorization - Category D (Passenger Transport Buses):
+​Description: Verification module validating Category D driving licenses for passenger transport, bus drivers, and group transit service providers.
+​Technical Implementation: Validation pipeline confirming commercial passenger transport credentials.
+​Driving License Categorization - Category E (Heavy Trailers & Articulated Rigs):
+​Description: Verification module validating Category E driving licenses for heavy trailers, semi-trucks, and articulated construction rigs.
+​Technical Implementation: Advanced license inspection verifying multi-axle heavy transport qualifications.
+​Video Liveness & Facial Motion Detection Module:
+​Description: Real-time interactive facial recognition module prompting users to perform randomized physical movements (blinking, turning head left/right) during onboarding.
+​Technical Implementation: Front-facing camera frame capture analyzed via client-side neural networks to prevent static photo spoofing.
+​Facial Match & Identity Comparison Engine:
+​Description: Biometric comparison module calculating a mathematical confidence score between live selfie captures and verified identity document photographs.
+​Technical Implementation: Embedding vector distance calculation returning a match percentage (threshold >= 85% for automated approval).
+​Verified Profile Badge Generator:
+​Description: Automated pipeline issuing a prominent green checkmark badge to user accounts that successfully complete full KYC identity verification.
+​Technical Implementation: Database flag update is_verified = true triggering UI badge rendering across profile headers and search cards.
+​Multi-Attribute Advanced Filter Engine:
+​Description: Complex sorting and filtering engine allowing users to sort listings by distance, user rating, price range, verified badge status, and real-time availability.
+​Technical Implementation: SQL query builder combining Haversine formula geospatial calculations with multi-column sorting indexes.
+​Client Emergency SOS Security System:
+​Description: Panic trigger mechanism transmitting user real-time GPS coordinates, device info, and audio snapshot to pre-configured emergency contacts and support.
+​Technical Implementation: Background geolocation dispatch triggered by triple-tap physical volume button or UI emergency button.
+​Role Switching Multi-Persona Architecture:
+​Description: Flexible architectural state allowing a single registered mobile number to seamlessly toggle between acting as a Client, Worker, Merchant, or Freelancer.
+​Technical Implementation: Session state management holding an array of active roles (roles: ['client', 'worker', 'merchant']) with dynamic UI view switching.
+​Firebase Cloud Messaging (FCM) Push Notification Service:
+​Description: Enterprise messaging integration dispatching real-time transaction alerts, chat messages, and operational status updates to Android and iOS devices.
+​Technical Implementation: APNs and FCM token registration paired with backend server-side Node.js push dispatchers.
+​In-App Persistent Notification Center:
+​Description: Centralized message hub maintaining a chronological database record of all user actions, bid notifications, escrow updates, and payment receipts.
+​Technical Implementation: Pagination-supported notification table storing read/unread states, deep-link routing payloads, and timestamps.
+​Data Privacy & GDPR/Algerian Law Compliance:
+​Description: Comprehensive data encryption and retention framework ensuring strict compliance with Algerian data protection laws regarding personal identity records.
+​Technical Implementation: AES-256 database column encryption for sensitive PII data and automated data anonymization upon account deletion requests.
+​================================================================================
+SECTION 2: B2B & B2C COMMERCE MARKETPLACE ENGINE
+​Unified Commerce Engine (B2B & B2C Dual-Mode):
+​Description: Dual-mode marketplace architecture capable of handling wholesale bulk commercial structures (B2B) alongside retail consumer purchasing (B2C) within the same catalog.
+​Technical Implementation: Dynamic pricing model toggling schema fields based on user session wholesale permissions.
+​Mode Toggle Interface (Wholesale / Retail Switcher):
+​Description: Animated header toggle switch permitting instantaneous visual and functional swapping between bulk wholesale rates and standard retail consumer pricing.
+​Technical Implementation: State change triggering re-evaluation of cart calculation logic and unit pricing display grids.
+​Unit & Bulk Pricing Matrix:
+​Description: Product display component rendering individual item retail pricing side-by-side with tiered volume discount tables for wholesale buyers.
+​Technical Implementation: Nested JSON price tier array parser ([{min_qty: 1, price: 100}, {min_qty: 50, price: 85}]).
+​Minimum Order Quantity (MOQ) Tagging & Enforcement:
+​Description: Prominent visual badge and checkout restriction specifying baseline purchase units required for wholesale B2B transactions.
+​Technical Implementation: Cart validation middleware preventing order placement if item quantity is less than the defined moq_threshold.
+​GPS Depot & Supplier Warehouse Locator:
+​Description: Interactive map interface displaying the nearest construction material depots, wholesale distribution centers, and hardware supply stores across all 58 Wilayas.
+​Technical Implementation: Mapbox/Google Maps integration querying spatial database indexes for supplier pins within a bounding box.
+​Merchant Credibility Scoring Engine:
+​Description: Automated algorithmic calculation evaluating merchant reliability based on fulfillment speed, order cancellation rate, and customer review scores.
+​Technical Implementation: Weighted scoring formula combining delivery punctuality metrics with user star ratings.
+​Multi-Vendor Unified Shopping Cart:
+​Description: Advanced shopping cart architecture allowing users to aggregate products from multiple vendors across different Wilayas into a single checkout flow.
+​Technical Implementation: Cart splitting algorithm grouping items by merchant ID to calculate independent shipping sub-totals.
+​Request for Quote (RFQ) System for Construction:
+​Description: Specialized B2B tool enabling construction project managers to broadcast bulk supply material requests to nearby merchants for competitive bidding.
+​Technical Implementation: Broadcast notification dispatch to all verified merchants within a specified Wilaya radius with quotation submission forms.
+​Live Parcel Shipment Tracking Integration:
+​Description: Real-time GPS tracking integration for local freight transport, logistics providers, and delivery couriers operating across regional transit corridors.
+​Technical Implementation: Courier driver mobile app GPS polling streaming coordinates via WebSockets to client tracking views.
+​Inventory Clearance & Daily Liquidation Feed:
+​Description: Dedicated daily discount section showcasing liquidated merchant inventory, overstock goods, and clearance items at reduced rates.
+​Technical Implementation: Automated promotional feed sorting items by discount percentage and expiration timers.
+​Real-Time Stock Synchronization Engine:
+​Description: Automated inventory reduction system instantly deducting stock quantities upon verified checkout to prevent double-booking or overselling.
+​Technical Implementation: Atomic database transactions (UPDATE inventory SET stock = stock - qty WHERE id = product_id AND stock >= qty).
+​================================================================================
+SECTION 3: TRADES, CRAFTSMEN, FREELANCE & POLIVALENTE ENGINE
+​Residential Plumbing - Domestic Leak Repair:
+​Description: Service listing connecting clients with certified plumbers for water leak detection, pipe joint repairs, and fixture replacements.
+​Technical Implementation: Geolocation matching pairing client emergency requests with active nearby plumbing professionals.
+​Water Heater Servicing & Installation:
+​Description: Technical service category covering gas water heater repair, electric boiler heating element replacement, and solar thermal maintenance.
+​Technical Implementation: Booking workflow capturing appliance brand, model, and issue description with photo attachments.
+​Central Heating Installation & Hydronic Balancing:
+​Description: Specialized service for radiator mounting, gas boiler commissioning, and hydronic loop pressure balancing in residential homes.
+​Technical Implementation: Multi-stage project booking with milestone payments linked to installation phases.
+​Deep Well Pump Maintenance & Installation:
+​Description: Heavy-duty service category for submersible borehole pump installation, pressure switch calibration, and well line extensions.
+​Technical Implementation: Service catalog entry requiring equipment specification tags (power rating, depth capacity).
+​Residential Electrical Wiring & Switchboard Upgrades:
+​Description: Certified electrical service covering complete home wiring, socket installation, fuse board upgrades, and earthing/grounding verification.
+​Technical Implementation: Safety compliance checklist requirement mandatory before job completion confirmation.
+​Industrial Electrical Maintenance & Automation:
+​Description: Advanced industrial service for three-phase power system installation, motor control cabinets, and factory automation troubleshooting.
+​Technical Implementation: Enterprise-tier service listing restricted to certified industrial electricians with verified credentials.
+​Solar Power Array Fitting & Inverter Setup:
+​Description: Renewable energy service covering rooftop solar racking installation, panel wiring, inverter setup, and battery system commissioning.
+​Technical Implementation: Technical calculation integration estimating array output based on geographic location and roof tilt.
+​Smart Home Automation & IoT Integration:
+​Description: Modern tech service for installing smart switches, video doorbells, automated gate motors, and biometric smart locks.
+​Technical Implementation: Service booking form with hardware compatibility selection matrices.
+​Masonry & Structural Works:
+​Description: Core construction service covering foundation pouring, brickwork laying, concrete slab casting, and retaining wall construction.
+​Technical Implementation: Material estimation calculator integration assisting clients in defining required raw material volumes.
+​Tile Setting & Flooring Execution:
+​Description: Professional trade service for ceramic tile installation, faience wall tiling, marble laying, and granite step fitting.
+​Technical Implementation: Portfolio gallery integration showcasing past tiling projects with customer reviews.
+​Plastering & Rendering Services:
+​Description: Traditional and modern plastering service covering interior cement render, exterior wall roughcasting, and smooth finishing coatings.
+​Technical Implementation: Square meter pricing calculator estimating labor and material costs.
+​Drywall & False Ceiling Construction (BA13):
+​Description: Specialized interior finishing service for BA13 plasterboard ceiling installation, decorative bulkheads, and acoustic partition walls.
+​Technical Implementation: Design template selection aiding clients in visualizing bulkhead configurations.
+​Painting & Wall Finishing:
+​Description: Interior and exterior painting service covering latex application, decorative Stucco finishes, and waterproof exterior coatings.
+​Technical Implementation: Color swatch selection tool allowing clients to specify preferred paint palettes.
+​Epoxy Flooring & Surface Polishing:
+​Description: Industrial flooring service covering epoxy resin application, concrete floor polishing, and surface grinding preparation.
+​Technical Implementation: Specialized equipment requirement tagging ensuring workers bring heavy grinding machinery.
+​Mobile Automotive Mechanics & Roadside Assistance:
+​Description: On-site vehicle repair service covering engine troubleshooting, roadside breakdown assistance, and mobile oil/filter replacements.
+​Technical Implementation: Live GPS breakdown pin dispatching alerts to mobile mechanics within a 20km radius.
+​Automotive Electrical Diagnostics & Wiring:
+​Description: Specialized automotive service covering starter motor repairs, alternator replacements, and wiring loom fault diagnosis.
+​Technical Implementation: Component replacement logging in service completion reports.
+​Vehicle Computer Diagnostics (OBD-II Scanning):
+​Description: Electronic scan service utilizing OBD-II tools to read error codes, clear check-engine lights, and reset ECU adaptation parameters.
+​Technical Implementation: Diagnostic report generation exporting error code descriptions directly to client chat.
+​Mobile Tire Service & Dynamic Balancing:
+​Description: On-site tire repair service covering puncture patching, tire mounting, dynamic wheel balancing, and air pressure optimization.
+​Technical Implementation: Tire size specification selector ensuring service vehicle carries correct replacement inventory.
+​Air Conditioning Repair & Gas Recharge:
+​Description: HVAC service covering refrigerant gas recharge (R410a, R32, R134a), compressor replacement, and evaporator coil cleaning.
+​Technical Implementation: Seasonal demand surge pricing algorithms managing peak summer repair queues.
+​Graphic Design & Brand Identity Creation (ريڥ):
+​Description: Freelance service for brand strategy, logo design, brand identity guidelines, and professional business card layouts.
+​Technical Implementation: Secure digital file delivery locker releasing source files upon escrow approval.
+​UI/UX Mobile & Web Design (ريڥ):
+​Description: Digital product design service covering user interface design, wireframing, and interactive prototyping in Figma and Adobe XD.
+​Technical Implementation: Interactive prototype link embedding within project deliverables.
+​Social Media Creatives & Marketing Assets (ريڥ):
+​Description: Graphic design service producing Instagram post templates, Facebook ad banners, and promotional poster designs.
+​Technical Implementation: Batch delivery pipeline supporting multiple image asset uploads.
+​Product Packaging Design (ريڥ):
+​Description: Industrial design service creating 3D box packaging mockups, label layouts, and die-cut vector templates.
+​Technical Implementation: 3D preview rendering engine displaying packaging mockups in-app.
+​Web Application Development (ريڥ):
+​Description: Full-stack software engineering service building custom web applications using React, Vue, Node.js, Laravel, and PHP frameworks.
+​Technical Implementation: Milestone-based project tracking dividing development into sprint phases.
+​Mobile App Engineering (ريڥ):
+​Description: Cross-platform mobile development service building applications using Flutter, React Native, iOS, and Android native toolkits.
+​Technical Implementation: Testflight/APK beta distribution link sharing through encrypted chat.
+​E-Commerce Store Development (ريڥ):
+​Description: Specialized web service setting up Shopify stores, WooCommerce configurations, and custom shopping cart integrations.
+​Technical Implementation: Payment gateway integration checklist verifying local and international payment rails.
+​Database & Backend Engineering (ريڥ):
+​Description: Backend development service designing PostgreSQL, MySQL, and MongoDB databases alongside REST API and GraphQL endpoints.
+​Technical Implementation: API documentation attachment sharing Swagger/Postman specs with clients.
+​Multilingual Translation Services (ريڥ):
+​Description: Professional translation service covering documents between Arabic, French, English, and Tamazight languages.
+​Technical Implementation: Word count calculator estimating project cost and completion time.
+​SEO & Professional Copywriting (ريڥ):
+​Description: Content creation service delivering search engine optimized articles, product sales copy, and corporate press releases.
+​Technical Implementation: Plagiarism and readability check score integration for delivered text content.
+​Legal Contract & Document Drafting (ريڥ):
+​Description: Legal freelance service creating business contract templates, terms of service agreements, and non-disclosure documents.
+​Technical Implementation: Dynamic template generator inserting verified party details into legal frameworks.
+​Proofreading & CV Writing (ريڥ):
+​Description: Academic proofreading and professional resume/CV writing service with custom cover letter design.
+​Technical Implementation: PDF resume builder formatting user input into professional templates.
+​Video Editing for Reels & TikTok (ريڥ):
+​Description: Short-form video editing service specializing in TikTok/Reels content, color grading, and sound mixing.
+​Technical Implementation: High-speed video file sharing supporting large MP4 uploads through cloud storage buckets.
+​Motion Graphics & 2D Animation (ريڥ):
+​Description: Animation service producing 2D explainer video animations, logo stingers, and promotional video intros.
+​Technical Implementation: Draft review loop allowing timestamped comment annotations on video timelines.
+​Professional Voiceover & Audio Production (ريڥ):
+​Description: Audio production service providing Algerian dialect voiceovers, classical Arabic voice acting, and professional audio cleanup.
+​Technical Implementation: High-fidelity audio sample preview player embedded in freelancer profiles.
+​Polivalente Feed - Daily Manual Labor Tasks:
+​Description: Live public feed streaming daily manual labor tasks (household moving, heavy loading/unloading, site cleanup).
+​Technical Implementation: Real-time geospatial feed updating instantly as new labor tasks are broadcast by clients.
+​One-Tap Application for Labor Tasks:
+​Description: Instant worker application mechanism allowing laborers to accept daily tasks with a single tap, establishing direct phone links.
+​Technical Implementation: Atomic bid submission recording worker timestamp and locking task availability.
+​Physical Capability & Punctuality Scoring System:
+​Description: Specialized client rating system evaluating daily laborers specifically on physical efficiency, speed, and punctuality.
+​Technical Implementation: Multi-axis rating metric averaging scores across completed manual labor tasks.
+​Base Budget Floor (1,000 DZD Minimum):
+​Description: System-enforced financial rule establishing a strict minimum baseline budget of 1,000 DZD for any labor or service job.
+​Technical Implementation: Frontend and backend validation rule rejecting any job posting or offer with a budget under 1,000 DZD.
+​Flexible Budget Ceiling & Custom Pricing:
+​Description: Open pricing architecture permitting custom high-value contracts and negotiable rates with no upper price ceiling.
+​Technical Implementation: Unbounded integer field supporting large contract valuations without artificial caps.
+​Worker Counter-Offer Negotiation Engine:
+​Description: Interactive negotiation tool allowing workers to submit custom counter-price proposals directly to clients with explanatory notes.
+​Technical Implementation: Offer history state machine tracking counter-proposals (Pending, Accepted, Rejected).
+​Polivalente Granular Distance Filtering:
+​Description: Proximity sorting filter allowing workers to filter daily labor tasks by distance from their live GPS location (1km to 50km).
+​Technical Implementation: Haversine distance calculation querying tasks within radius parameters.
+​Budget Sorting & Price High/Low Filters:
+​Description: Sorting filter organizing task listings from lowest to highest budget or highest to lowest budget thresholds.
+​Technical Implementation: SQL ORDER BY budget ASC/DESC query modifiers.
+​Required Equipment & Tool Tagging:
+​Description: Job listing attribute specifying mandatory tools or transport equipment workers must bring (e.g., ladder, drill, pickup truck).
+​Technical Implementation: Tag array matching worker registered equipment profiles against job requirements.
+​Multi-Worker Crew Recruitment Requests:
+​Description: Enterprise client tool enabling the hiring of coordinated teams of multiple laborers for large-scale physical jobs.
+​Technical Implementation: Crew slot allocation supporting multi-worker acceptance under a single parent contract.
+​================================================================================
+SECTION 4: AI ASSISTANTS, CALCULATORS & OPERATIONAL TOOLS
+​Algerian Dialect Voice AI Assistant:
+​Description: Natural language processing voice assistant optimized for spoken Algerian Arabic (Darija) commands and queries.
+​Technical Implementation: Whisper-based speech-to-text model fine-tuned on Algerian dialect phonetic datasets.
+​Photo Damage & Repair Cost Estimator AI:
+​Description: Computer vision AI analysis examining photos of damaged items or structures to automatically estimate repair and material costs.
+​Technical Implementation: Image segmentation and object detection neural network mapping damage severity to historical repair pricing tables.
+​Construction Material Quantity Calculator:
+​Description: Automated estimation tool calculating required cement bags, sand volume, gravel weight, and brick count based on room dimensions.
+​Technical Implementation: Mathematical formula processing surface area and wall thickness inputs against standard masonry ratios.
+​Payment Receipt AI Verification Engine:
+​Description: Computer vision OCR verification module inspecting CCP and Baridimob transaction receipt screenshots for authenticity.
+​Technical Implementation: Text extraction cross-referencing transaction reference numbers, dates, and amounts against postal API logs.
+​Automated Day-Labor Contract Generator:
+​Description: Instant legal document generator creating compliant short-term work agreements incorporating local labor regulations.
+​Technical Implementation: PDF generation engine populating dynamic legal templates with verified user metadata.
+​Regional Terminology Translator Dictionary:
+​Description: Linguistic dictionary tool mapping technical craft terms and slang words across different Algerian Wilayas.
+​Technical Implementation: Relational database mapping regional synonym arrays for common construction and trade terms.
+​Worker Digital Resume Generator (PDF):
+​Description: Automated PDF resume creation tool compiling verified client reviews, work history, and portfolio photos into a professional document.
+​Technical Implementation: Headless PDF renderer compiling user profile data into a structured printable layout.
+​Anti-Fraud Price Detector AI:
+​Description: Automated monitoring algorithm detecting suspicious pricing anomalies, fake listings, or coordinated review manipulation.
+​Technical Implementation: Statistical outlier detection analyzing price distributions per category and Wilaya.
+​Urgent Dispatch AI Matching Engine:
+​Description: Dynamic dispatch algorithm matching urgent emergency service requests with the closest available qualified worker.
+​Technical Implementation: Geospatial priority queue evaluating worker proximity, rating, and online status.
+​Fair Rate Guidance Engine:
+​Description: AI price benchmark provider offering historical average cost data for specific trades to guide fair negotiations.
+​Technical Implementation: Moving average calculation tracking completed contract prices per category over trailing 90-day windows.
+​Air Conditioner Sizing (BTU) Calculator:
+​Description: HVAC calculation tool determining required AC BTU capacity based on room dimensions, ceiling height, and window exposure.
+​Technical Implementation: Thermodynamic formula computing cooling load requirements from user dimensional inputs.
+​Concrete Batching Mix Calculator:
+​Description: Proportional concrete mix calculator determining precise weights and volumes for cement, sand, gravel, and water.
+​Technical Implementation: Standard mix ratio matrix (e.g., Mix 1:2:4) scaling volumes to total cubic meter requirements.
+​Solar Array Dimensioning & Sizing Tool:
+​Description: Renewable energy calculator estimating required photovoltaic panel count and battery storage sizing from daily Watt-hour loads.
+​Technical Implementation: Solar irradiance database lookup combined with load profile arithmetic.
+​OBD-II Code Diagnostic Library:
+​Description: Searchable automotive error code database detailing fault definitions, potential causes, and recommended repair solutions.
+​Technical Implementation: Relational index of standard P-codes mapped to technical repair guides.
+​Electrical Wire Gauge & Ampacity Calculator:
+​Description: Electrical engineering tool calculating voltage drop and conductor cross-section requirements for AC/DC installations.
+​Technical Implementation: National electrical code ampacity table lookups based on load current and cable run distance.
+​Real-Time End-to-End Encrypted Chat Engine:
+​Description: Secure messaging module supporting text, high-resolution images, voice notes, and live map coordinate sharing.
+​Technical Implementation: WebSocket-based transport layer with client-side message encryption keys.
+​In-Chat GPS Map Coordinate Sharing:
+​Description: Native map pin sharing widget allowing clients and workers to exchange precise meeting coordinates directly within chat views.
+​Technical Implementation: Interactive map thumbnail rendering GPS latitude and longitude waypoints.
+​Dispute Mediation Center & Arbitration Hub:
+​Description: In-app arbitration channel providing structured evidence upload and statement input for resolving client-craftsman conflicts.
+​Technical Implementation: Case management workflow routing dispute logs to human administrative review queues.
+​PDF Tax Invoice & Commercial Receipt Generator:
+​Description: Professional invoice creation tool formatted with tax fields, stamp duty calculations, and commercial registration details.
+​Technical Implementation: PDFKit template generation rendering compliant business invoices upon order completion.
+​System Cache & Database Performance Cleaner:
+​Description: Backend optimization utility clearing temporary cache files and optimizing database indexes to ensure rapid response times.
+​Technical Implementation: Scheduled maintenance scripts executing database vacuum and cache invalidation routines.
+​================================================================================
+SECTION 5: DETAILED WILAYA & REGIONAL LOGISTICS CONFIGURATION (01 TO 58)
+​Wilaya 01 - Adrar:
+​Configuration: Local desert hub routing, extreme climate logistics parameters, solar energy and deep masonry trade priority.
+​Wilaya 02 - Chlef:
+​Configuration: Coastal and agricultural logistics configuration, building materials supply hubs, and transport corridor services.
+​Wilaya 03 - Laghouat:
+​Configuration: Central steppe transit routing, industrial maintenance, and petroleum/gas sector service categories.
+​Wilaya 04 - Oum El Bouaghi:
+​Configuration: Eastern plateau logistics hub, commercial grain trade support, and agricultural machinery repair focus.
+​Wilaya 05 - Batna:
+​Configuration: Aurès regional hub, heavy machinery parts, stone quarrying tools, and stone masonry trade focus.
+​Wilaya 06 - Béjaïa:
+​Configuration: Port logistics integration, maritime shipping support, tourism infrastructure maintenance, and industrial supply hubs.
+​Wilaya 07 - Biskra:
+​Configuration: Agricultural machinery spares, date processing hardware, and desert cooling/HVAC specialist focus.
+​Wilaya 08 - Béchar:
+​Configuration: South-western transport junction, heavy commercial vehicle repair, and trans-desert building supplies.
+​Wilaya 09 - Blida:
+​Configuration: Central agricultural and industrial zone, HVAC manufacturing, factory maintenance, and wholesale distribution.
+​Wilaya 10 - Bouira:
+​Configuration: Mountain transit corridor logistics, civil construction supplies, and highway equipment maintenance trades.
+​Wilaya 11 - Tamanrasset:
+​Configuration: Deep south logistics interface, off-road vehicle spares, mobile mechanic dispatch, and satellite communications setup.
+​Wilaya 12 - Tébessa:
+​Configuration: Border trade logistics, mining machinery replacement parts, and heavy freight routing corridors.
+​Wilaya 13 - Tlemcen:
+​Configuration: Western border hub, architectural heritage restoration, traditional woodworking, and specialized craft priorities.
+​Wilaya 14 - Tiaret:
+​Configuration: Agricultural implement repairs, livestock transport equipment, and heavy mechanical maintenance trades.
+​Wilaya 15 - Tizi Ouzou:
+​Configuration: Mountainous construction logistics, residential plumbing, plastering, custom carpentry, and artisanal hubs.
+​Wilaya 16 - Algiers (Capital):
+​Configuration: High-density metropolitan hub, rapid delivery courier network, corporate IT freelance priority, and commercial trade center.
+​Wilaya 17 - Djelfa:
+​Configuration: Central livestock market trade, heavy transport vehicle spares, deep well drilling, and masonry services.
+​Wilaya 18 - Jijel:
+​Configuration: Port and steel industry hub, marine hardware supplies, ceramic tiling, and wood joinery focus.
+​Wilaya 19 - Sétif:
+​Configuration: Commercial retail and manufacturing powerhouse, home appliances, electronics, and B2B wholesale distribution.
+​Wilaya 20 - Saïda:
+​Configuration: Water bottling machinery maintenance, agricultural equipment repairs, and regional artisanal crafts.
+​Wilaya 21 - Skikda:
+​Configuration: Petrochemical industrial safety supplies, heavy pipe fittings, and maritime port logistics routing.
+​Wilaya 22 - Sidi Bel Abbès:
+​Configuration: Electronics repair hubs, agricultural technology, and solar water pump installation focus.
+​Wilaya 23 - Annaba:
+​Configuration: Steel manufacturing supplies, marine engineering, industrial welding, and urban municipal services.
+​Wilaya 24 - Guelma:
+​Configuration: Thermal spring tourism infrastructure, agricultural machinery parts, and residential home maintenance.
+​Wilaya 25 - Constantine:
+​Configuration: Eastern capital technical hub, high-tech freelance software development, and bridge engineering equipment.
+​Wilaya 26 - Médéa:
+​Configuration: Mountain highway transport service, agricultural tool manufacturing, and residential housing construction.
+​Wilaya 27 - Mostaganem:
+​Configuration: Coastal port logistics, greenhouse agriculture construction, and electrical trade service hubs.
+​Wilaya 28 - M'Sila:
+​Configuration: Brick manufacturing centers, sand and gravel quarries, masonry, and heavy transport logistics.
+​Wilaya 29 - Mascara:
+​Configuration: Irrigation equipment supply, agricultural mechanics, and residential plumbing services.
+​Wilaya 30 - Ouargla:
+​Configuration: Oilfield supply logistics, heavy machinery hydraulics, and high-capacity industrial cooling systems.
+​Wilaya 31 - Oran:
+​Configuration: Western metropolis hub, shipping container logistics, corporate freelance, and automotive manufacturing spares.
+​Wilaya 32 - El Bayadh:
+​Configuration: Steppe livestock equipment, solar power installations, and off-grid water pumping systems.
+​Wilaya 33 - Illizi:
+​Configuration: Desert energy sector logistics, heavy 4x4 vehicle spares, and specialized remote satellite IT services.
+​Wilaya 34 - Bordj Bou Arréridj:
+​Configuration: National electronics and home appliance manufacturing hub alongside electronic component spare parts distribution.
+​Wilaya 35 - Boumerdès:
+​Configuration: Coastal construction supplies, university freelance talent pool, and seafood cold-chain refrigeration.
+​Wilaya 36 - El Tarf:
+​Configuration: Forestry equipment, eco-tourism infrastructure hardware, and border trade logistics.
+​Wilaya 37 - Tindouf:
+​Configuration: Mining corridor logistics, extreme environment vehicle parts, and autonomous solar power setups.
+​Wilaya 38 - Tissemsilt:
+​Configuration: Rural development infrastructure, timber construction, and domestic water storage tank systems.
+​Wilaya 39 - El Oued:
+​Configuration: Desert agriculture cooling systems, deep submersible well pumps, and sand-resistant agricultural hardware.
+​Wilaya 40 - Khenchela:
+​Configuration: Forest product harvesting, stone quarrying tools, and residential heating system maintenance.
+​Wilaya 41 - Souk Ahras:
+​Configuration: Border agricultural logistics, heavy machinery mechanics, and residential trade services.
+​Wilaya 42 - Tipaza:
+​Configuration: Tourism infrastructure maintenance, boat and marine engine spares, and architectural building finishes.
+​Wilaya 43 - Mila:
+​Configuration: Water reservoir infrastructure, agricultural machinery, and plaster/drywall trade services.
+​Wilaya 44 - Aïn Defla:
+​Configuration: Major agricultural transport axis, tractor parts, and cold storage facility maintenance.
+​Wilaya 45 - Naâma:
+​Configuration: Border steppe logistics, solar water pumping, and mobile automotive repair dispatch.
+​Wilaya 46 - Aïn Témouchent:
+​Configuration: Coastal agriculture, fishing fleet hardware, and residential tiling and marble installation.
+​Wilaya 47 - Ghardaïa:
+​Configuration: Traditional architectural restoration crafts, textile machinery, and desert HVAC specialists.
+​Wilaya 48 - Relizane:
+​Configuration: Transport corridor logistics, plastic manufacturing supply inputs, and heavy mechanics.
+​Wilaya 49 - El M'Ghair:
+​Configuration: Date palm irrigation hardware, solar power arrays, and desert construction services.
+​Wilaya 50 - El Meniaa:
+​Configuration: Deep desert oasis agriculture, borehole drilling equipment, and solar infrastructure maintenance.
+​Wilaya 51 - Ouled Djellal:
+​Configuration: Agricultural processing equipment, sheep transport logistics, and masonry services.
+​Wilaya 52 - Bordj Baji Mokhtar:
+​Configuration: Trans-Saharan logistics, heavy commercial vehicle maintenance, and off-grid power generation systems.
+​Wilaya 53 - Béni Abbès:
+​Configuration: Desert tourism maintenance, solar power installations, and mobile mechanic dispatch.
+​Wilaya 54 - Timimoun:
+​Configuration: Mud-brick architectural restoration crafts, tourism infrastructure, and solar water pump setups.
+​Wilaya 55 - Touggourt:
+​Configuration: Palm plantation irrigation systems, petroleum sector logistics, and heavy electrical installations.
+​Wilaya 56 - Djanet:
+​Configuration: Remote desert logistics, 4x4 mechanical service, and satellite communication equipment setup.
+​Wilaya 57 - In Salah:
+​Configuration: High-temperature HVAC specialists, pipeline hardware supplies, and large-scale solar arrays.
+​Wilaya 58 - In Guezzam:
+​Configuration: Border crossing logistics, heavy freight vehicle repair, and diesel generator setup services.
+​================================================================================
+SECTION 6: WORKFLOW SCHEMATICS & USER INTERFACE SPECIFICATIONS
+​Client Onboarding View:
+​Description: Clean phone entry UI featuring a national flag selector, country code prefix (+213), and clear DZD/USD pricing banners.
+​OTP Input View:
+​Description: 6-cell auto-advancing PIN input field featuring automated SMS reading capabilities for frictionless code verification.
+​Profile Type Selection Screen:
+​Description: Visual selection cards allowing users to choose their primary operating persona (Client, Worker, Merchant, or Freelancer).
+​Identity Verification (KYC) Camera Viewfinder:
+​Description: Camera overlay framing guide capturing national ID cards, driver licenses, student IDs, and real-time liveness videos.
+​Home Dashboard Bottom Navigation Bar:
+​Description: Persistent bottom navigation bar housing quick-access buttons for Home, Search, Post Job, Messages, and Profile.
+​Market Mode Switcher UI Header:
+​Description: Animated toggle switch located at the top application header for seamlessly swapping between B2B Wholesale and B2C Retail modes.
+​Category Grid Display UI:
+​Description: Visual iconography grid representing top-tier trade sectors, commercial departments, and freelance categories.
+​Product Detail View Screen:
+​Description: High-resolution image carousel, unit price badge, MOQ wholesale requirement alert, and instant call/chat action buttons.
+​Worker Service Request Card UI:
+​Description: Detailed job description display card showing client location map, attached problem photos, and direct offer submission buttons.
+​Polivalente Daily Task Card UI:
+​Description: Task display card highlighting the 1,000 DZD floor badge, urgency tag, required equipment tags, and one-tap bidding option.
+​Interactive Chat Screen:
+​Description: Timestamped messaging view supporting text bubbles, audio recording wave bars, photo thumbnail galleries, and map pin sharing.
+​Dispute Resolution Interface:
+​Description: Structured arbitration form containing evidence upload dropzones, statement input textboxes, and live status badges for Admin review.
+​Payment Portal Screen:
+​Description: Financial screen featuring CCP receipt upload dropzones, Baridimob transaction reference entry fields, and RedotPay gateway buttons.
+​Admin Master Control Panel:
+​Description: Comprehensive administrative dashboard displaying live user counts, financial revenue gauges, and instant system override controls.
+​System Status & Health Indicator Badge:
+​Description: Global monitoring badge displaying real-time operational status for database connectivity, SMS gateways, and cloud storage servers.
+​================================================================================
+END OF KHEDMA DZ ULTIMATE MASTER SPECIFICATION

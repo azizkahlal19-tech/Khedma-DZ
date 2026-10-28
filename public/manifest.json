@@ -1,0 +1,52 @@
+{
+  "id": "/",
+  "name": "خدمة ديزاد - Khedma DZ Super App",
+  "short_name": "Khedma DZ",
+  "description": "المنصة الجزائرية الشاملة للحرف، التوظيف، العقار، والتجارة عبر 58 ولاية",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#064e3b",
+  "theme_color": "#047857",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["business", "shopping", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "التوظيف وعروض العمل",
+      "short_name": "التوظيف",
+      "description": "تصفح أحدث عروض العمل والترشح الفوري",
+      "url": "/#jobs",
+      "icons": [{ "src": "/pwa-icon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "سوق العقار وكريلو",
+      "short_name": "العقار",
+      "description": "عروض الكراء والبيع بدون وساطة مبالغ فيها",
+      "url": "/#realEstate",
+      "icons": [{ "src": "/pwa-icon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "طوارئ SOS الحرفيين",
+      "short_name": "SOS",
+      "description": "طلب النجدة والتدخل السريع للحرفيين",
+      "url": "/#sos",
+      "icons": [{ "src": "/pwa-icon.svg", "sizes": "96x96" }]
+    }
+  ]
+}
